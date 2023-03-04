@@ -1,23 +1,23 @@
 import { Contacts } from 'components/Contacts/Contacts';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Navbar } from './Navbar/Navbar';
 import { Login } from './Login/Login';
 import { Register } from './Register/Register';
-// import { refreshUser } from 'redux/user/operations';
+import { refreshUser } from 'redux/user/operations';
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return (
     <Routes>
-      {/* <Route path="/" element={<Navbar />}>
+      <Route path="/" element={<Navbar />}>
         <Route
           path="/register"
           element={
@@ -36,12 +36,12 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<Contacts />} />
           }
         />
-      </Route> */}
-      <Route path="/" element={<Navbar />}>
+      </Route>
+      {/* <Route path="/" element={<Navbar />}>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contacts" element={<Contacts />} />
-      </Route>
+      </Route> */}
     </Routes>
   );
 };

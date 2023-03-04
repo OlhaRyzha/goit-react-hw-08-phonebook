@@ -1,10 +1,16 @@
-import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/user/operations';
-// import { useAuth } from 'hooks/useAuth';
+import { useAuth } from 'hooks/useAuth';
+import { StyledNavLink } from 'components/AuthNav/AuthNav.styled';
+import {
+  Container,
+  UserMenuButton,
+  UserMenuName,
+  UserMenuText,
+} from './UserMenu.styled';
 
 export const UserMenu = () => {
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -12,27 +18,19 @@ export const UserMenu = () => {
   };
   return (
     <>
-      <ul>
-        {/* <li>
-          <NavLink to="points">Points</NavLink>
-        </li>
-        <li>
-          <NavLink to="friends">Friend-list</NavLink>
-        </li>
-        <li>
-          <NavLink to="photos">Photos</NavLink>
-        </li> */}
-        <li>
-          <NavLink to="contacts">Contacts</NavLink>
-        </li>
-      </ul>
-      <p>
-        Welcome,
-        {/* {user.name} */}
-      </p>
-      <button type="button" onClick={handleLogout}>
-        Logout
-      </button>
+      <Container>
+        <ul>
+          <li>
+            <StyledNavLink to="contacts">Contacts</StyledNavLink>
+          </li>
+        </ul>
+        <UserMenuButton type="button" onClick={handleLogout}>
+          Logout
+        </UserMenuButton>
+      </Container>
+      <UserMenuText>
+        Welcome, <UserMenuName>{user.name}</UserMenuName>{' '}
+      </UserMenuText>
     </>
   );
 };

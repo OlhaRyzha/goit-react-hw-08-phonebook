@@ -25,13 +25,14 @@ const contactsSlice = createSlice({
         state.contacts = state.contacts.filter(
           contact => contact.id !== payload.id
         );
+
         state.isLoading = false;
       })
       .addCase(deleteContact.rejected, rejectHandler)
       // ----- addContact -----
       .addCase(addContact.pending, pendingHandler)
       .addCase(addContact.fulfilled, (state, { payload }) => {
-        state.contacts = [payload, ...state.contacts];
+        state.contacts = [payload, ...state.contacts].reverse();
         state.isLoading = false;
       })
       .addCase(addContact.rejected, rejectHandler),

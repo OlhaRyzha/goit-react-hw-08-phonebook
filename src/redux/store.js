@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { contactsReducer } from './contactsSlice';
 import { filterReducer } from './filterSlice';
-
+import { userReducer } from './user/userSlice';
+import storage from 'redux-persist/lib/storage';
+import { clientsReducer } from './contacts/clientsSlice';
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -12,10 +15,21 @@ import {
   REGISTER,
 } from 'redux-persist';
 
+const persistConfig = {
+  key: 'user',
+  version: 1,
+  storage,
+  whitelist: ['token'],
+};
+
+const persistedReducer = persistReducer(persistConfig, userReducer);
+
 export const store = configureStore({
   reducer: {
     contactsData: contactsReducer,
     filterData: filterReducer,
+    user: persistedReducer,
+    clients: clientsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

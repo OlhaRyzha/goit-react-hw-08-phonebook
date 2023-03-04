@@ -1,19 +1,17 @@
 import { Outlet } from 'react-router-dom';
-// import { useAuth } from 'hooks/useAuth';
+import { useAuth } from 'hooks/useAuth';
 import { UserMenu } from 'components/UserMenu/UserMenu';
-// import { AuthNav } from 'components/AuthNav/AuthNav';
-import { NavLink } from 'react-router-dom';
+import { AuthNav } from 'components/AuthNav/AuthNav';
+import { NavBar } from './Navbar.styled';
+import { StyledNavLink } from 'components/AuthNav/AuthNav.styled';
 
 export const Navbar = () => {
-  // const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
   return (
-    <div>
-      <NavLink to="/">Home</NavLink>
-      {/* {isLoggedIn ? */}
-      <UserMenu />
-      {/* : 
-       <AuthNav />} */}
+    <NavBar>
+      <StyledNavLink to="/">Home</StyledNavLink>
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
       <Outlet />
-    </div>
+    </NavBar>
   );
 };

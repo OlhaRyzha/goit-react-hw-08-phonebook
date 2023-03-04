@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/user/operations';
-
+import { Form, Input, Button } from 'components/ContactForm/ContactForm.styled';
 export const Register = () => {
   const dispatch = useDispatch();
 
@@ -16,11 +16,11 @@ export const Register = () => {
     event.target.reset();
   };
   return (
-    <form onSubmit={handelSubmit}>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="password" name="password" />
-      <button type="submit">Submit</button>
-    </form>
+    <Form onSubmit={handelSubmit}>
+      <Input type="text" name="name" />
+      <Input type="email" name="email" />
+      <Input type="password" name="password" />
+      <Button type="submit">Submit</Button>
+    </Form>
   );
 };
