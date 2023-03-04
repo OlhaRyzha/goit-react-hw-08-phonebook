@@ -1,28 +1,47 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { Title } from './Title/Title';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactList/ContactList';
+import { Contacts } from 'components/Contacts/Contacts';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { Navbar } from './Navbar/Navbar';
+import { Login } from './Login/Login';
+import { Register } from './Register/Register';
+// import { refreshUser } from 'redux/user/operations';
 
-export function App() {
+export const App = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
   return (
-    <>
-    Routes>
-            <Route path="/" element={<ContactsPage />} />
-            <Route path="/sign-in" element={<SignInPage />} />
-            <Route path="/sign-up" element={<SignUpPage />} />
-            
-            <Route
-              path="*"
-              element={
-                <Navigate to="/" />
-              }
-            />
-          </Routes>
-      // <Title message="Phonebook" />
-      // <ContactForm />
-      // <Title message="Contacts" />
-      // <Filter />
-      // <ContactList />
-    </>
+    <Routes>
+      {/* <Route path="/" element={<Navbar />}>
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
+      </Route> */}
+      <Route path="/" element={<Navbar />}>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contacts" element={<Contacts />} />
+      </Route>
+    </Routes>
   );
-}
+};
