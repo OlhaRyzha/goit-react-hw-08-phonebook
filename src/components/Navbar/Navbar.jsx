@@ -5,7 +5,7 @@ import { AuthNav } from 'components/AuthNav/AuthNav';
 import { NavBar } from './Navbar.styled';
 import { StyledNavLink } from 'components/AuthNav/AuthNav.styled';
 
-export const Navbar = () => {
+const Navbar = () => {
   const { isLoggedIn } = useAuth();
   return (
     <NavBar>
@@ -15,3 +15,4 @@ export const Navbar = () => {
     </NavBar>
   );
 };
+export default Navbar;

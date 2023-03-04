@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/user/operations';
 import { Form, Input, Button } from 'components/ContactForm/ContactForm.styled';
-export const Register = () => {
+
+const Register = () => {
   const dispatch = useDispatch();
 
   const handelSubmit = event => {
@@ -24,3 +25,5 @@ export const Register = () => {
     </Form>
   );
 };
+
+export default Register;

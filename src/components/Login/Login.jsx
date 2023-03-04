@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'components/ContactForm/ContactForm.styled';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/user/operations';
 
-export const Login = () => {
+const Login = () => {
   const dispatch = useDispatch();
 
   const handelSubmit = event => {
@@ -24,3 +24,4 @@ export const Login = () => {
     </Form>
   );
 };
+export default Login;
